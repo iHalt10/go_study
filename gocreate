@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir ./src/tour_of_go/$1
+touch ./src/tour_of_go/$1/$1.go
