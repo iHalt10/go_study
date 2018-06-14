@@ -18,7 +18,8 @@ build: $(TARGETS)
 $(TARGETDIR)/%: $(SRCROOT)/%.go
 	@if [ ! -e `dirname $@` ]; then mkdir -p `dirname $@`; fi
 	go build -o $@ $<
-	@if [ ! -e $(TARGETDIR)/$(shell basename $@) ]; then ln $@ $(TARGETDIR)/$(shell basename $@); fi
+	@if [ -e $(TARGETDIR)/$(shell basename $@) ]; then rm -f $(TARGETDIR)/$(shell basename $@); fi
+	ln $@ $(TARGETDIR)/$(shell basename $@)
 
 init:
 	@if [ ! -e ./bin ]; then mkdir ./bin; fi
